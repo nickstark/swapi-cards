@@ -7,8 +7,8 @@ interface SWAPIPaginatedResponse<T> {
 
 export interface SWAPIPerson {
   name: string;
-  height: string;
-  mass: string;
+  height: string; // in centimeters
+  mass: string; // in kilograms
   birth_year: string;
   films: string[];
   species: string[];

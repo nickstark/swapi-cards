@@ -5,16 +5,23 @@ interface CharacterCardProps {
   person: SWAPIPerson;
 }
 
+const CM_IN_METER = 100;
+const convertCmToM = (centimeters: number) =>
+  (centimeters / CM_IN_METER).toFixed(2);
+
 export const CharacterCard = ({ person }: CharacterCardProps) => {
+  const heightInMeters = isNaN(+person.height)
+    ? person.height // account for "unknown"
+    : `${convertCmToM(+person.height)} meters`;
+  const massInKg = isNaN(+person.mass) ? person.mass : `${person.mass} kg`;
   return (
     <div className={styles.card}>
       <div className={styles.title}>{person.name}</div>
       <dl className={styles.details}>
         <dt>Height</dt>
-        {/* TODO: convert height */}
-        <dd>{person.height}</dd>
+        <dd>{heightInMeters}</dd>
         <dt>Mass</dt>
-        <dd>{person.mass}</dd>
+        <dd>{massInKg}</dd>
         <dt>Date Added</dt>
         {/* TODO: reformat date */}
         <dd>{person.created}</dd>
