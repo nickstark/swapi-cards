@@ -17,6 +17,8 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  max-width: 1600px;
+  margin-inline: auto;
   list-style: none;
 }
 
@@ -35,3 +37,29 @@
     -webkit-text-stroke-color: #ffe81f;
   }
 } */
+
+.btnBar {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.btn {
+  background: transparent;
+  border: 3px solid black;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.loading {
+  text-align: center;
+}
