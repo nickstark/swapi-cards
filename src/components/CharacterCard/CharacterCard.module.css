@@ -1,0 +1,26 @@
+.card {
+  border: 3px solid black;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  border-bottom: 3px solid black;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.details dt {
+  font-weight: bold;
+}
