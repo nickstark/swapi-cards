@@ -1,6 +1,7 @@
 import { SWAPIPerson } from "@/types";
-import styles from "./CharacterCard.module.css";
+import styles from "./CharacterCard.module.scss";
 import { useMemo } from "react";
+import { spec } from "node:test/reporters";
 
 // TODO: add tests for all requirements
 
@@ -33,6 +34,15 @@ export const CharacterCard = ({ person }: CharacterCardProps) => {
     [person.created]
   );
 
+  // Assumption: indicate species based on first
+  const speciesIds = person.species.length
+    ? person.species.map((speciesUrl) =>
+        speciesUrl
+          .replace("https://swapi.dev/api/species/", "")
+          .replace("/", "")
+      )
+    : ["1"]; // NOTE: there seems to be a bug in SWAPI where humans are being reported with no species, patching manually until a fix is found
+
   //TODO: make card details visible on focus for users without cursors
 
   return (
@@ -51,6 +61,16 @@ export const CharacterCard = ({ person }: CharacterCardProps) => {
           <dt>Birth Year</dt>
           <dd>{person.birth_year}</dd>
         </dl>
+        <div className={styles.speciesIndicators}>
+          {/* ENHANCEMENT: load species names from API */}
+          {speciesIds.map((id) => (
+            <div
+              key={id}
+              data-species={id}
+              className={styles.speciesIndicator}
+            ></div>
+          ))}
+        </div>
       </div>
     </div>
   );
